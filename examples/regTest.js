@@ -1,4 +1,4 @@
-const RegReplace = require("./js/src/regreplace.js");
+const RegReplace = require("../regreplace.js");
 
 const regRepGen = new RegReplace();
 const regRep    = regRepGen.regedReplacer(/\$(\S*)/g);

@@ -23,7 +23,7 @@ function RegRepMatches(matchArr) {
       return matchArr.map((elem) => elem[1]);
    }
 
-   this.getIndicies = function getIndicies() {
+   this.getIndices = function getIndicies() {
       return matchArr.map((elem) => elem.index);
    }
 
