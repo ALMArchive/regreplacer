@@ -74,7 +74,7 @@ const RegRepMatches = __webpack_require__(1);
 const validateRegex = __webpack_require__(2);
 
 function RegReplace(regex) {
-   if(!validateRegex(regex)) throw new Error("Must pass regex to regedReplacer");
+   if(!validateRegex(regex)) throw new Error("Must pass regex to RegReplace");
 
    this.match = function match(str) {
       if(typeof str != "string") {

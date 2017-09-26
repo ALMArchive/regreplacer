@@ -4,7 +4,7 @@ const RegRepMatches = require("./src/regrepmatches.js");
 const validateRegex = require("./src/validateregex.js");
 
 function RegReplace(regex) {
-   if(!validateRegex(regex)) throw new Error("Must pass regex to regedReplacer");
+   if(!validateRegex(regex)) throw new Error("Must pass regex to RegReplace");
 
    this.match = function match(str) {
       if(typeof str != "string") {

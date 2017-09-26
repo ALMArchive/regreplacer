@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha test",
     "build": "webpack; npm run min;",
-    "min": "minify ./dist/regreplace.bundle.js --out-dir ./dist --out-file ./dist/regreplace.bundle.min.js --mangle.keepClassName"
+    "min": "minify ./dist/regreplace.bundle.js --out-dir ./dist --out-file ./dist/regreplace.bundle.min.js --mangle.keepClassName",
+    "ex": "node examples/main-example.js"
   },
   "repository": {
     "type": "git",
