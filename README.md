@@ -16,3 +16,18 @@ console.log(regMatches.replace(["This", "is", "RegReplacer."], "matches"));
 ## API
 
 ### RegReplacer
+Main class, constructor takes a valid regex and returns a RegReplacer object.
+Invalid regexs will throw an error on construction.
+
+#### Construction
+```
+const RegReplacer = require("../regreplacer.js");
+const RegRepMatches = require("../src/RegRepMatches.js");
+
+const regRep  = new RegReplacer(/\S+/g);
+const regReg2 = new RegReplacer(new RegExp("/s/g"));
+```
+
+#### Methods
+
+##### Match
