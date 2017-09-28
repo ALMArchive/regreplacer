@@ -175,11 +175,11 @@ console.log(newString5); // This is cool
 
 ## Scripts
 
-### Testing
+#### Testing
 To run mocha/chai tests.
 `npm run test`
 
-### Examples
+#### Examples
 To run the main example.
 `npm run ex`
 
