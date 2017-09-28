@@ -1,4 +1,4 @@
-# RegReplacerr
+# RegReplacer
 A library to facilitate **regex** matches and **replacing** matches.
 
 ```
@@ -12,3 +12,7 @@ console.log(regMatches.replace(["This", "is", "RegReplacer."], "matches"));
 
 ## Installing
 `npm install regreplacer`
+
+## API
+
+### RegReplacer
