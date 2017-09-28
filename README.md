@@ -1,5 +1,5 @@
 # RegReplacerr
-A library to facilitate regex matches and replacing matches.
+A library to facilitate **regex** matches and **replacing** matches.
 
 ## Installing
-npm install regreplacer
+`npm install regreplacer`
