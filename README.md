@@ -161,7 +161,7 @@ console.log(newString3); // $This $is $cool
 newString4 = regMatches.replace([1, 2, 3], "captures");
 console.log(newString4); // $1 $2 $3
 
-// Replacemnets can be done programmtically
+// Replacements can be done programmtically
 let capMap = {'v1':'This', 'v2':'is', 'v3':'cool'};
 let reaAr = [];
 
