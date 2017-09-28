@@ -7,9 +7,15 @@ function validateRegex(reg) {
    return !(reg instanceof RegExp) ? false : true;
 }
 
+// Used for class identification
+const RegReplacerSymbol = Symbol("RegReplacer");
+
 class RegReplacer {
    constructor(regex) {
       if(!validateRegex(regex)) throw new Error("Must pass regex to RegReplacer");
+
+      // Class Identifier
+      this[RegReplacerSymbol] = RegReplacerSymbol;
 
       this.match = function match(str) {
          if(typeof str != "string") {
@@ -25,6 +31,10 @@ class RegReplacer {
             if(tmpMatch && (tmpMatch.index === lastIndex)) break;
          }
          return new RegRepMatches(matches);
+      }
+
+      this.isClass = function(val) {
+         return val[RegReplacerSymbol] === RegReplacerSymbol;
       }
    }
 }

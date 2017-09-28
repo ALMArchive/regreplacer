@@ -12,9 +12,15 @@ function validateType(type) {
    }
 }
 
+// Used for class identification
+const RegRepMatchesSymbol = Symbol("RegRepMatches");
+
 class RegRepMatches {
    constructor(matchArr) {
       if(!Array.isArray(matchArr)) throw new Error("Must pass array to RegRepMatches.");
+
+      // Class Identifier
+      this[RegRepMatchesSymbol] = RegRepMatchesSymbol;
 
       this.getMatches = function getMatches() {
          return matchArr.map((elem) => elem[0]);
@@ -46,6 +52,10 @@ class RegRepMatches {
          }
 
          return repString;
+      }
+
+      this.isClass = function(val) {
+         return val[RegRepMatchesSymbol] === RegRepMatchesSymbol;
       }
    }
 }
