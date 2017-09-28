@@ -24,10 +24,25 @@ console.log(indices); // [0, 4, 8]
 
 // After matching, we can replace the matches with an array of values
 let newString1 = regMatches.replace(["This", "is", "cool."], "matches");
-console.log(newString1);
+console.log(newString1); // This is cool
 
 newString2 = regMatches.replace([1, 2, 3], "matches");
-console.log(newString2);
+console.log(newString2); // 1 2 3
 
-newString3 = regMatches.replace([{'a':1}, {'b':2}, {'c':3}], "captures");
-console.log(newString3);
+// Or we can replace the captures
+let newString3 = regMatches.replace(["This", "is", "cool."], "captures");
+console.log(newString3); // $This $is $cool
+
+newString4 = regMatches.replace([1, 2, 3], "captures");
+console.log(newString4); // $1 $2 $3
+
+// Replacemnets can be done programmtically
+let capMap = {'v1':'This', 'v2':'is', 'v3':'cool'};
+let reaAr = [];
+
+for(const match of captures) {
+   reaAr.push(capMap[match]);
+}
+
+let newString5 = regMatches.replace(reaAr, "matches");
+console.log(newString5); // This is cool

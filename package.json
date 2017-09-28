@@ -1,17 +1,17 @@
 {
-  "name": "regreplace",
+  "name": "regreplacer",
   "version": "0.0.1",
   "description": "A library to facilitate regex matching, match/capture retrieval and string replacement",
-  "main": "regreplace.js",
+  "main": "regreplacer.js",
   "scripts": {
     "test": "mocha test",
     "build": "webpack; npm run min;",
-    "min": "minify ./dist/regreplace.bundle.js --out-dir ./dist --out-file ./dist/regreplace.bundle.min.js --mangle.keepClassName",
+    "min": "minify ./dist/regreplacer.bundle.js --out-dir ./dist --out-file ./dist/regreplacer.bundle.min.js --mangle.keepClassName",
     "ex": "node examples/main-example.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ALMaclaine/regreplace.git"
+    "url": "git+https://github.com/ALMaclaine/regreplacer.git"
   },
   "keywords": [
     "Regex",
@@ -23,9 +23,9 @@
   "author": "Alessandro Maclaine",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ALMaclaine/regreplace/issues"
+    "url": "https://github.com/ALMaclaine/regreplacer/issues"
   },
-  "homepage": "https://github.com/ALMaclaine/regreplace#readme",
+  "homepage": "https://github.com/ALMaclaine/regreplacer#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
