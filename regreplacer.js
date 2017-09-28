@@ -1,10 +1,14 @@
 "use strict";
 
 const RegRepMatches = require("./src/regrepmatches.js");
-const validateRegex = require("./src/validateregex.js");
 
-function RegReplace(regex) {
-   if(!validateRegex(regex)) throw new Error("Must pass regex to RegReplace");
+function validateRegex(reg) {
+   if(reg === undefined) return false;
+   return !(reg instanceof RegExp) ? false : true;
+}
+
+function RegReplacer(regex) {
+   if(!validateRegex(regex)) throw new Error("Must pass regex to RegReplacer");
 
    this.match = function match(str) {
       if(typeof str != "string") {
@@ -23,4 +27,8 @@ function RegReplace(regex) {
    }
 }
 
-module.exports = RegReplace;
+class A {
+   constructor() {}
+}
+
+module.exports = RegReplacer;

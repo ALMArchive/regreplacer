@@ -1,7 +1,7 @@
-const RegReplace = require("../regreplace.js");
+const RegReplacer = require("../regreplacer.js");
 
-// Generate a RegReplace object tied to a specific regex
-const regRep = new RegReplace(/\$(\S*)/g);
+// Generate a RegReplacer object tied to a specific regex
+const regRep = new RegReplacer(/\$(\S*)/g);
 
 // Create a string to match on
 let string = "$v1 $v2 $v3";
