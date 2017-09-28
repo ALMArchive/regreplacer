@@ -26,7 +26,6 @@ const regRep  = new RegReplacer(/\S+/g);
 const regReg2 = new RegReplacer(new RegExp("/s/g"));
 console.log(regRep.isClass(regReg2));
 ```
-*True*
 #### Methods
 
 ##### Match
@@ -44,4 +43,3 @@ const match   = regRep.match("Word");
 const match2  = regRep.match("Word");
 console.log(match.isClass(match2));
 ```
-*True*
