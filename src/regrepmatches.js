@@ -12,39 +12,41 @@ function validateType(type) {
    }
 }
 
-function RegRepMatches(matchArr) {
-   if(!Array.isArray(matchArr)) throw new Error("Must pass array to RegRepMatches.");
+class RegRepMatches {
+   constructor(matchArr) {
+      if(!Array.isArray(matchArr)) throw new Error("Must pass array to RegRepMatches.");
 
-   this.getMatches = function getMatches() {
-      return matchArr.map((elem) => elem[0]);
-   }
-
-   this.getCaptures = function getCaptures() {
-      return matchArr.map((elem) => elem[1]);
-   }
-
-   this.getIndices = function getIndicies() {
-      return matchArr.map((elem) => elem.index);
-   }
-
-   this.replace = function replace(repArr, type) {
-      if(!Array.isArray(repArr)) throw new Error("Must pass array to replace.");
-      if(!validateType(type)) throw new Error("Must pass either captures or matches to replace");
-
-      let tmpArr;
-      if(type === "matches") {
-        tmpArr = this.getMatches();
-      } else if(type === "captures") {
-        tmpArr = this.getCaptures();
+      this.getMatches = function getMatches() {
+         return matchArr.map((elem) => elem[0]);
       }
 
-      let repString = matchArr[0].input;
-
-      for(let i = 0; i < matchArr.length; i++) {
-         repString = repString.replace(tmpArr[i], repArr[i]);
+      this.getCaptures = function getCaptures() {
+         return matchArr.map((elem) => elem[1]);
       }
 
-      return repString;
+      this.getIndices = function getIndicies() {
+         return matchArr.map((elem) => elem.index);
+      }
+
+      this.replace = function replace(repArr, type) {
+         if(!Array.isArray(repArr)) throw new Error("Must pass array to replace.");
+         if(!validateType(type)) throw new Error("Must pass either captures or matches to replace");
+
+         let tmpArr;
+         if(type === "matches") {
+           tmpArr = this.getMatches();
+         } else if(type === "captures") {
+           tmpArr = this.getCaptures();
+         }
+
+         let repString = matchArr[0].input;
+
+         for(let i = 0; i < matchArr.length; i++) {
+            repString = repString.replace(tmpArr[i], repArr[i]);
+         }
+
+         return repString;
+      }
    }
 }
 
