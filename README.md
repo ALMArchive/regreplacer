@@ -1,7 +1,7 @@
 # RegReplacer
 A library to facilitate **regex** matches and **replacing** matches.
 
-```
+```javascript
 const regRep     = new RegReplacer(/Word/g);
 const str        = "Word Word Word";
 const regMatches = regRep.match(str);
@@ -15,7 +15,7 @@ This is RegReplacer
 
 ## Main Example
 Setup.
-```
+```javascript
 // Generate a RegReplacer object tied to a specific regex
 const regRep = new RegReplacer(/\$(\S*)/g);
 
@@ -27,7 +27,7 @@ let regMatches = regRep.match(string);
 ```
 
 Retrieve match data.
-```
+```javascript
 // From the RegRepMatches object we can do several things
 // First we can get the matches
 let matches = regMatches.getMatches();
@@ -43,7 +43,7 @@ console.log(indices); // [0, 4, 8]
 ```
 
 Replace on matches.
-```
+```javascript
 // After matching, we can replace the matches with an array of values
 let newString1 = regMatches.replace(["This", "is", "cool."], "matches");
 console.log(newString1); // This is cool
@@ -53,7 +53,7 @@ console.log(newString2); // 1 2 3
 ```
 
 Replace on captures.
-```
+```javascript
 // Or we can replace the captures
 let newString3 = regMatches.replace(["This", "is", "cool."], "captures");
 console.log(newString3); // $This $is $cool
@@ -63,7 +63,7 @@ console.log(newString4); // $1 $2 $3
 ```
 
 Replacements can be done programmtically.
-```
+```javascript
 let capMap = {'v1':'This', 'v2':'is', 'v3':'cool'};
 let reaAr = [];
 
@@ -82,7 +82,7 @@ Main class, constructor takes a valid regex and returns a RegReplacer object.
 Invalid regexs will throw an error on construction.
 
 #### Construction
-```
+```javascript
 const RegReplacer = require("../regreplacer.js");
 
 const regRep  = new RegReplacer(/\S+/g);
@@ -93,7 +93,7 @@ Returns RegReplacer object.
 
 ##### Match
 Match function takes a word and returns a RegRepMatches Object.
-```
+```javascript
 const regRep  = new RegReplacer(/Word/g);
 const match   = regRep.match("Word");
 ```
@@ -103,7 +103,7 @@ Returns RepRapMatches Object.
 
 ##### isClass
 Used to determine class type equality. Implemented internally using symbols.
-```
+```javascript
 const regRep  = new RegReplacer(/\S+/g);
 const regReg2 = new RegReplacer(new RegExp("/s/g"));
 console.log(regRep.isClass(regReg2));
@@ -117,7 +117,7 @@ Returns boolean.
 
 ##### getMatches
 Returns the matches that would have been found after initializing RegReplacer and passing a string to match.
-```
+```javascript
 const regRep  = new RegReplacer(/Word/g);
 const match   = regRep.match("Word Word Word");
 console.log(match.getMatches());
@@ -127,7 +127,7 @@ Returns empty array if no matches found.
 
 ##### getCaptures
 Returns the captures that would have been found after initializing RegReplacer and passing a string to match.
-```
+```javascript
 const regRep  = new RegReplacer(/W(ord)/g);
 const match   = regRep.match("Word Word Word");
 console.log(match.getCaptures());
@@ -137,7 +137,7 @@ Returns empty array if no matches/captures found.
 
 ##### getIndices
 Returns the indices of the mathces that would have been found after initializing RegReplacer and passing a string to match.
-```
+```javascript
 const regRep  = new RegReplacer(/W(ord)/g);
 const match   = regRep.match("Word Word Word");
 console.log(match.getIndices());
@@ -147,7 +147,7 @@ Returns empty array if no matches found.
 
 ##### isClass
 Used to determine class type equality. Implemented internally using symbols.
-```
+```javascript
 const regRep  = new RegReplacer(/Word/g);
 const match   = regRep.match("Word");
 const match2  = regRep.match("Word");
@@ -159,7 +159,7 @@ Returns boolean.
 ##### replace
 Used to replace matches or captures with an array of values.
 Extra values are ignored, and insufficient values will be replaced with undefined.
-```
+```javascript
 // Simple replacement on matches
 const regRep  = new RegReplacer(/Word/g);
 const match   = regRep.match("Word Word Word");
