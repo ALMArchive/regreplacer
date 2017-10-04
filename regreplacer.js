@@ -10,32 +10,30 @@ function validateRegex(reg) {
 // Used for class identification
 const RegReplacerSymbol = Symbol("RegReplacer");
 
-class RegReplacer {
-   constructor(regex) {
-      if(!validateRegex(regex)) throw new Error("Must pass regex to RegReplacer");
+function RegReplacer(regex) {
+   if(!validateRegex(regex)) throw new Error("Must pass regex to RegReplacer");
 
-      // Class Identifier
-      this[RegReplacerSymbol] = RegReplacerSymbol;
+   // Class Identifier
+   this[RegReplacerSymbol] = RegReplacerSymbol;
 
-      this.match = function match(str) {
-         if(typeof str != "string") {
-            throw new Error("Must pass string to setString.");
-         }
-         let tmpMatch = regex.exec(str);
-         let matches = [];
-
-         while(tmpMatch != null) {
-            matches.push(tmpMatch);
-            let lastIndex = match.index;
-            tmpMatch = regex.exec(str);
-            if(tmpMatch && (tmpMatch.index === lastIndex)) break;
-         }
-         return new RegRepMatches(matches);
+   this.match = function match(str) {
+      if(typeof str != "string") {
+         throw new Error("Must pass string to setString.");
       }
+      let tmpMatch = regex.exec(str);
+      let matches = [];
 
-      this.isClass = function(val) {
-         return val[RegReplacerSymbol] === RegReplacerSymbol;
+      while(tmpMatch != null) {
+         matches.push(tmpMatch);
+         let lastIndex = match.index;
+         tmpMatch = regex.exec(str);
+         if(tmpMatch && (tmpMatch.index === lastIndex)) break;
       }
+      return new RegRepMatches(matches);
+   }
+
+   this.isClass = function(val) {
+      return val[RegReplacerSymbol] === RegReplacerSymbol;
    }
 }
 
