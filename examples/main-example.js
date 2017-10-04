@@ -9,6 +9,10 @@ let string = "$v1 $v2 $v3";
 // Calling match function on string returns a RegRepMatches object
 let regMatches = regRep.match(string);
 
+// We can test whether any matches were found using hasMatches
+let anyMatches = regMatches.hasMatches();
+console.log(anyMatches); // true
+
 // From the RegRepMatches object we can do several things
 // First we can get the matches
 let matches = regMatches.getMatches();

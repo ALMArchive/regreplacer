@@ -50,6 +50,14 @@ describe("RegRepMatches", function() {
          regMatch = new RegRepMatches([]);
          chai.expect(regMatch.getIndices().length).to.equal(0);
       });
+      it('hasMatches should return false on empty matches', function() {
+         regMatch = new RegRepMatches([]);
+         chai.expect(regMatch.hasMatches()).to.be.false;
+      });
+      it('hasMatches should return true on non-empty matches', function() {
+         regMatch = new RegRepMatches([["asd"],["asd"],[0]]);
+         chai.expect(regMatch.hasMatches()).to.be.true;
+      });
       it('Error when empty array and matches', function() {
          regMatch = new RegRepMatches([]);
          chai.expect(() => regMatch.replace([], "matches")).to.throw(Error);

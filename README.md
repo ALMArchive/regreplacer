@@ -28,6 +28,10 @@ let regMatches = regRep.match(string);
 
 Retrieve match data.
 ```javascript
+// We can test whether any matches were found using hasMatches
+let anyMatches = regMatches.hasMatches();
+console.log(anyMatches); // true
+
 // From the RegRepMatches object we can do several things
 // First we can get the matches
 let matches = regMatches.getMatches();
@@ -114,6 +118,16 @@ Returns boolean.
 ### RegRepMatches
 
 #### Methods
+
+##### hasMatches
+Returns boolean value for whether or not any matches were found.
+```javascript
+const regRep  = new RegReplacer(/W(ord)/g);
+const match   = regRep.match("Word Word Word");
+console.log(match.hasMatches());
+true
+```
+Returns a boolean value.
 
 ##### getMatches
 Returns the matches that would have been found after initializing RegReplacer and passing a string to match.
