@@ -29,20 +29,20 @@ let regMatches = regRep.match(string);
 Retrieve match data.
 ```javascript
 // We can test whether any matches were found using hasMatches
-let anyMatches = regMatches.hasMatches();
+let anyMatches = regMatches.hasMatches;
 console.log(anyMatches); // true
 
 // From the RegRepMatches object we can do several things
 // First we can get the matches
-let matches = regMatches.getMatches();
+let matches = regMatches.matches;
 console.log(matches); // ['$v1', '$v2', '$v3']
 
 // Next we can get the captures
-let captures = regMatches.getCaptures();
+let captures = regMatches.captures;
 console.log(captures); // ['v1', 'v2', 'v3']
 
 // Finally we can get the indices of matches
-let indices = regMatches.getIndices();
+let indices = regMatches.indices;
 console.log(indices); // [0, 4, 8]
 ```
 
@@ -117,14 +117,14 @@ Returns boolean.
 
 ### RegRepMatches
 
-#### Methods
+#### Compuer Properties
 
 ##### hasMatches
 Returns boolean value for whether or not any matches were found.
 ```javascript
 const regRep  = new RegReplacer(/W(ord)/g);
 const match   = regRep.match("Word Word Word");
-console.log(match.hasMatches());
+console.log(match.hasMatches);
 true
 ```
 Returns a boolean value.
@@ -134,7 +134,7 @@ Returns the matches that would have been found after initializing RegReplacer an
 ```javascript
 const regRep  = new RegReplacer(/Word/g);
 const match   = regRep.match("Word Word Word");
-console.log(match.getMatches());
+console.log(match.matches);
 [Word, Word, Word]
 ```
 Returns empty array if no matches found.
@@ -144,7 +144,7 @@ Returns the captures that would have been found after initializing RegReplacer a
 ```javascript
 const regRep  = new RegReplacer(/W(ord)/g);
 const match   = regRep.match("Word Word Word");
-console.log(match.getCaptures());
+console.log(match.captures);
 [ord, ord, ord]
 ```
 Returns empty array if no matches/captures found.
@@ -154,10 +154,12 @@ Returns the indices of the mathces that would have been found after initializing
 ```javascript
 const regRep  = new RegReplacer(/W(ord)/g);
 const match   = regRep.match("Word Word Word");
-console.log(match.getIndices());
+console.log(match.indices);
 [0, 5, 10]
 ```
 Returns empty array if no matches found.
+
+#### Methods
 
 ##### isClass
 Used to determine class type equality. Implemented internally using symbols.

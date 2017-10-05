@@ -1,11 +1,12 @@
 {
   "name": "regreplacer",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A library to facilitate regex matching, match/capture retrieval and string replacement",
   "main": "regreplacer.js",
   "scripts": {
     "test": "mocha test",
-    "ex": "node examples/main-example.js"
+    "ex": "node examples/main-example.js",
+    "exAll": "node examples/runAll.js"
   },
   "repository": {
     "type": "git",

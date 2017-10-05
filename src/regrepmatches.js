@@ -23,19 +23,19 @@ class RegRepMatches {
       this.MatchArSymbol = matchArr;
    }
 
-   getMatches() {
+   get matches() {
       return this.MatchArSymbol.map((elem) => elem[0]);
    }
 
-   getCaptures() {
+   get captures() {
       return this.MatchArSymbol.map((elem) => elem[1]);
    }
 
-   getIndices() {
+   get indices() {
       return this.MatchArSymbol.map((elem) => elem.index);
    }
 
-   hasMatches() {
+   get hasMatches() {
       return !!this.MatchArSymbol[0];
    }
 
@@ -45,9 +45,9 @@ class RegRepMatches {
 
       let tmpArr;
       if(type === "matches") {
-        tmpArr = this.getMatches();
+        tmpArr = this.matches;
       } else if(type === "captures") {
-        tmpArr = this.getCaptures();
+        tmpArr = this.captures;
       }
 
       // Grab original input off a match

@@ -10,20 +10,20 @@ let string = "$v1 $v2 $v3";
 let regMatches = regRep.match(string);
 
 // We can test whether any matches were found using hasMatches
-let anyMatches = regMatches.hasMatches();
+let anyMatches = regMatches.hasMatches;
 console.log(anyMatches); // true
 
 // From the RegRepMatches object we can do several things
 // First we can get the matches
-let matches = regMatches.getMatches();
+let matches = regMatches.matches;
 console.log(matches); // ['$v1', '$v2', '$v3']
 
 // Next we can get the captures
-let captures = regMatches.getCaptures();
+let captures = regMatches.captures;
 console.log(captures); // ['v1', 'v2', 'v3']
 
 // Finally we can get the indices of matches
-let indices = regMatches.getIndices();
+let indices = regMatches.indices;
 console.log(indices); // [0, 4, 8]
 
 // After matching, we can replace the matches with an array of values

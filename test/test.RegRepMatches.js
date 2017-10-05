@@ -38,25 +38,25 @@ describe("RegRepMatches", function() {
       });
    });
    describe("Empty Gets", function() {
-      it('getMatches should be 0 on empty matches', function() {
+      it('matches should be 0 on empty matches', function() {
          regMatch = new RegRepMatches([]);
-         chai.expect(regMatch.getMatches().length).to.equal(0);
+         chai.expect(regMatch.matches.length).to.equal(0);
       });
       it('getCaptures should be 0 on empty matches', function() {
          regMatch = new RegRepMatches([]);
-         chai.expect(regMatch.getCaptures().length).to.equal(0);
+         chai.expect(regMatch.captures.length).to.equal(0);
       });
       it('getIndices should be 0 on empty matches', function() {
          regMatch = new RegRepMatches([]);
-         chai.expect(regMatch.getIndices().length).to.equal(0);
+         chai.expect(regMatch.indices.length).to.equal(0);
       });
       it('hasMatches should return false on empty matches', function() {
          regMatch = new RegRepMatches([]);
-         chai.expect(regMatch.hasMatches()).to.be.false;
+         chai.expect(regMatch.hasMatches).to.be.false;
       });
       it('hasMatches should return true on non-empty matches', function() {
          regMatch = new RegRepMatches([["asd"],["asd"],[0]]);
-         chai.expect(regMatch.hasMatches()).to.be.true;
+         chai.expect(regMatch.hasMatches).to.be.true;
       });
       it('Error when empty array and matches', function() {
          regMatch = new RegRepMatches([]);
