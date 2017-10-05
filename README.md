@@ -129,7 +129,7 @@ true
 ```
 Returns a boolean value.
 
-##### getMatches
+##### matches
 Returns the matches that would have been found after initializing RegReplacer and passing a string to match.
 ```javascript
 const regRep  = new RegReplacer(/Word/g);
@@ -139,7 +139,7 @@ console.log(match.matches);
 ```
 Returns empty array if no matches found.
 
-##### getCaptures
+##### captures
 Returns the captures that would have been found after initializing RegReplacer and passing a string to match.
 ```javascript
 const regRep  = new RegReplacer(/W(ord)/g);
@@ -149,7 +149,7 @@ console.log(match.captures);
 ```
 Returns empty array if no matches/captures found.
 
-##### getIndices
+##### indices
 Returns the indices of the mathces that would have been found after initializing RegReplacer and passing a string to match.
 ```javascript
 const regRep  = new RegReplacer(/W(ord)/g);
