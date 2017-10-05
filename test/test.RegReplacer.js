@@ -54,6 +54,18 @@ describe("RegReplacer", function() {
          chai.expect(() => regRep.match(/s/g)).to.throw(Error);
       });
    });
+   describe("isClass", function() {
+      it('test if two instances of regRep matches on isClass', function() {
+         let regRep  = new RegReplacer(/s/g);
+         let regRep2 = new RegReplacer(/s/g);
+         chai.expect(regRep.isClass(regRep2)).to.be.true;
+      });
+      it('test if isClass matches on mismatched types', function() {
+         let regRep  = new RegReplacer(/s/g);
+         let map1 = new Map();;
+         chai.expect(regRep.isClass(map1)).to.be.false;
+      });
+   });
    describe("match Output", function() {
       it('match should return RegRepMatches on string input', function() {
          let regRep = new RegReplacer(/s/g);

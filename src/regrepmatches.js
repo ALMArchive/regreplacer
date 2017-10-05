@@ -10,30 +10,36 @@ function validateType(type) {
 
 // Used for class identification
 const RegRepMatchesSymbol = Symbol("RegRepMatches");
+const MatchArSymbol       = Symbol("MatchArSymbol");
 
-function RegRepMatches(matchArr) {
-   if(!Array.isArray(matchArr)) throw new Error("Must pass array to RegRepMatches.");
+class RegRepMatches {
+   constructor(matchArr) {
+      if(!Array.isArray(matchArr)) throw new Error("Must pass array to RegRepMatches.");
 
-   // Class Identifier
-   this[RegRepMatchesSymbol] = RegRepMatchesSymbol;
+      // Class Identifier
+      this[RegRepMatchesSymbol] = RegRepMatchesSymbol;
 
-   this.getMatches = function getMatches() {
-      return matchArr.map((elem) => elem[0]);
+      // Put match array on a private variable
+      this.MatchArSymbol = matchArr;
    }
 
-   this.getCaptures = function getCaptures() {
-      return matchArr.map((elem) => elem[1]);
+   getMatches() {
+      return this.MatchArSymbol.map((elem) => elem[0]);
    }
 
-   this.getIndices = function getIndicies() {
-      return matchArr.map((elem) => elem.index);
+   getCaptures() {
+      return this.MatchArSymbol.map((elem) => elem[1]);
    }
 
-   this.hasMatches = function hasMatches() {
-      return !!matchArr[0];
+   getIndices() {
+      return this.MatchArSymbol.map((elem) => elem.index);
    }
 
-   this.replace = function replace(repArr, type) {
+   hasMatches() {
+      return !!this.MatchArSymbol[0];
+   }
+
+   replace(repArr, type) {
       if(!Array.isArray(repArr)) throw new Error("Must pass array to replace.");
       if(!validateType(type)) throw new Error("Must pass either captures or matches to replace");
 
@@ -44,17 +50,20 @@ function RegRepMatches(matchArr) {
         tmpArr = this.getCaptures();
       }
 
-      let repString = matchArr[0].input;
+      // Grab original input off a match
+      let repString = this.MatchArSymbol[0].input;
 
-      for(let i = 0; i < matchArr.length; i++) {
+      // Replace each match using the passed in array.
+      // Stops replacing after matches.length
+      for(let i = 0; i < this.MatchArSymbol.length; i++) {
          repString = repString.replace(tmpArr[i], repArr[i]);
       }
 
       return repString;
    }
 
-   this.isClass = function(val) {
-      return val[RegRepMatchesSymbol] === RegRepMatchesSymbol;
+   isClass(other) {
+      return this[RegRepMatchesSymbol] === other[RegRepMatchesSymbol];
    }
 }
 

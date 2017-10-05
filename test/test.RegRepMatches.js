@@ -117,6 +117,18 @@ describe("RegRepMatches", function() {
          chai.expect(regMatch.replace([""], "matches")).to.equal("");
       });
    });
+   describe("isClass", function() {
+      it('test if two instances of regRep matches on isClass', function() {
+         let regMatch  = new RegRepMatches([]);
+         let regMatch2 = new RegRepMatches([]);
+         chai.expect(regMatch.isClass(regMatch2)).to.be.true;
+      });
+      it('test if isClass matches on mismatched types', function() {
+         let regMatch  = new RegRepMatches([]);
+         let map1 = new Map();;
+         chai.expect(regMatch.isClass(map1)).to.be.false;
+      });
+   });
    describe("String Replace Outputs", function() {
       it('$v1 $v2 $v3 string replace should be This is cool on matches', function() {
          regMatch = new RegRepMatches(matches);
