@@ -97,11 +97,11 @@ Returns RegReplacer object.
 
 ##### Match
 Match function takes a word and returns a RegRepMatches Object.
+Will throw and error if passed anything other than a string.
 ```javascript
 const regRep  = new RegReplacer(/Word/g);
 const match   = regRep.match("Word");
 ```
-Will throw and error if passed anything other than a string.
 Returns RepRapMatches Object.
 
 
