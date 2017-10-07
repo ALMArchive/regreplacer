@@ -211,5 +211,8 @@ To run mocha/chai tests.
 To run the main example.
 `npm run ex`
 
+To run all examples.
+`npm run exAll`
+
 ## License
 RegReplace.js is released under the MIT license.
