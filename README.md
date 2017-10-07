@@ -117,7 +117,7 @@ Returns boolean.
 
 ### RegRepMatches
 
-#### Compuer Properties
+#### Computed Properties
 
 ##### hasMatches
 Returns boolean value for whether or not any matches were found.
