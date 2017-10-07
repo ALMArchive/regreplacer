@@ -5,8 +5,8 @@
   "main": "regreplacer.js",
   "scripts": {
     "test": "mocha test",
-    "ex": "node examples/main-example.js",
-    "exAll": "node examples/runAll.js"
+    "ex": "node ex/main-example.js",
+    "exAll": "node ex/runAll.js"
   },
   "repository": {
     "type": "git",
