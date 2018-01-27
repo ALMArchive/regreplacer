@@ -1,70 +1,62 @@
-"use strict";
-
 function validateType(type) {
-   if(type === "captures" || type === "matches") {
-      return true;
-   } else {
-      return false;
-   }
+  if (type === 'captures' || type === 'matches') {
+    return true;
+  }
+  return false;
 }
 
 // Used for class identification
-const RegRepMatchesSymbol = Symbol("RegRepMatches");
-const MatchArSymbol       = Symbol("MatchArSymbol");
+const CLASS_SYMBOL = Symbol('RegRepMatches Symbol');
 
-class RegRepMatches {
-   constructor(matchArr) {
-      if(!Array.isArray(matchArr)) throw new Error("Must pass array to RegRepMatches.");
+export default class RegRepMatches {
+  constructor(matches) {
+    if (!Array.isArray(matches)) throw new Error('Must pass array to RegRepMatches.');
 
-      // Class Identifier
-      this[RegRepMatchesSymbol] = RegRepMatchesSymbol;
+    // Class Identifier
+    this[CLASS_SYMBOL] = { CLASS_SYMBOL, matches };
+  }
 
-      // Put match array on a private variable
-      this.MatchArSymbol = matchArr;
-   }
+  get matches() {
+    return this[CLASS_SYMBOL].matches.map(elem => elem[0]);
+  }
 
-   get matches() {
-      return this.MatchArSymbol.map((elem) => elem[0]);
-   }
+  get captures() {
+    return this[CLASS_SYMBOL].matches.map(elem => elem[1]);
+  }
 
-   get captures() {
-      return this.MatchArSymbol.map((elem) => elem[1]);
-   }
+  get indices() {
+    return this[CLASS_SYMBOL].matches.map(elem => elem.index);
+  }
 
-   get indices() {
-      return this.MatchArSymbol.map((elem) => elem.index);
-   }
+  get hasMatches() {
+    return !!this[CLASS_SYMBOL].matches[0];
+  }
 
-   get hasMatches() {
-      return !!this.MatchArSymbol[0];
-   }
+  replace(repArr, type) {
+    if (!Array.isArray(repArr)) throw new Error('Must pass array to replace.');
+    if (!validateType(type)) throw new Error('Must pass either captures or matches to replace');
 
-   replace(repArr, type) {
-      if(!Array.isArray(repArr)) throw new Error("Must pass array to replace.");
-      if(!validateType(type)) throw new Error("Must pass either captures or matches to replace");
+    let tmpArr;
+    if (type === 'matches') {
+      tmpArr = this.matches;
+    } else if (type === 'captures') {
+      tmpArr = this.captures;
+    }
 
-      let tmpArr;
-      if(type === "matches") {
-        tmpArr = this.matches;
-      } else if(type === "captures") {
-        tmpArr = this.captures;
-      }
+    // Grab original input off a match
+    let repString = this[CLASS_SYMBOL].matches[0].input;
 
-      // Grab original input off a match
-      let repString = this.MatchArSymbol[0].input;
+    // Replace each match using the passed in array.
+    repString = tmpArr.reduce((a, c, i) => a.replace(c, repArr[i]), repString);
 
-      // Replace each match using the passed in array.
-      // Stops replacing after matches.length
-      for(let i = 0; i < this.MatchArSymbol.length; i++) {
-         repString = repString.replace(tmpArr[i], repArr[i]);
-      }
 
-      return repString;
-   }
+    return repString;
+  }
 
-   isClass(other) {
-      return this[RegRepMatchesSymbol] === other[RegRepMatchesSymbol];
-   }
+  isClass(other) {
+    if (!other[CLASS_SYMBOL]) return false;
+    if (!other[CLASS_SYMBOL].CLASS_SYMBOL) return false;
+    if (!this[CLASS_SYMBOL].CLASS_SYMBOL) return false;
+    return this[CLASS_SYMBOL].CLASS_SYMBOL === other[CLASS_SYMBOL].CLASS_SYMBOL;
+  }
 }
-
-module.exports = RegRepMatches;

@@ -1,17 +1,18 @@
 "use strict";
 
 const chai = require('chai');
-const RegRepMatches = require('../src/regrepmatches.js');
+
+import RegRepMatches from '../src/regrepmatches';
 
 let reg = new RegExp(/\$(\S*)/g);
 let str = "$v1 $v2 $v3";
 let match = reg.exec(str);
 let matches = [];
-while(match != null) {
+while (match != null) {
    matches.push(match);
    let lastIndex = match.index;
    match = reg.exec(str);
-   if(match && (match.index === lastIndex)) break;
+   if (match && (match.index === lastIndex)) break;
 }
 let regMatch;
 
@@ -22,19 +23,8 @@ describe("RegRepMatches", function() {
          chai.expect(regMatch.constructor.name === "RegRepMatches").to.be.true;
       });
       it('Should throw error on object.', function() {
-         chai.expect(() => { new RegRepMatches() }).to.throw(Error);
-      });
-      it('Should throw error on number.', function() {
-         chai.expect(() => { new RegRepMatches(1) }).to.throw(Error);
-      });
-      it('Should throw error on string.', function() {
-         chai.expect(() => { new RegRepMatches("") }).to.throw(Error);
-      });
-      it('Should throw error on empty', function() {
-         chai.expect(() => { new RegRepMatches() }).to.throw(Error);
-      });
-      it('Should throw error on null.', function() {
-         chai.expect(() => { new RegRepMatches(null) }).to.throw(Error);
+         const vals = [{}, [], 1, "", null, undefined];
+         vals.map(e => chai.expect(() => { new RegRepMatches() }).to.throw(Error));
       });
    });
    describe("Empty Gets", function() {
@@ -70,35 +60,8 @@ describe("RegRepMatches", function() {
    describe("String Replace Input", function() {
       it('error on no arguments', function() {
          regMatch = new RegRepMatches([]);
-         chai.expect(() => regMatch.replace()).to.throw(Error);
-      });
-      it('error if first argument is object', function() {
-         regMatch = new RegRepMatches([]);
-         chai.expect(() => regMatch.replace({})).to.throw(Error);
-      });
-      it('error if first argument is string', function() {
-         regMatch = new RegRepMatches([]);
-         chai.expect(() => regMatch.replace("")).to.throw(Error);
-      });
-      it('error if first argument is number', function() {
-         regMatch = new RegRepMatches([]);
-         chai.expect(() => regMatch.replace(1)).to.throw(Error);
-      });
-      it('error if first argument is null', function() {
-         regMatch = new RegRepMatches([]);
-         chai.expect(() => regMatch.replace(null)).to.throw(Error);
-      });
-      it('error if first argument is array and second is object', function() {
-         regMatch = new RegRepMatches([]);
-         chai.expect(() => regMatch.replace([], {})).to.throw(Error);
-      });
-      it('error if first argument is array and second is array', function() {
-         regMatch = new RegRepMatches([]);
-         chai.expect(() => regMatch.replace([], [])).to.throw(Error);
-      });
-      it('error if first argument is array and second is number', function() {
-         regMatch = new RegRepMatches([]);
-         chai.expect(() => regMatch.replace([], 1)).to.throw(Error);
+         const vals = [{}, [], 1, "", null, undefined];
+         vals.map(e => chai.expect(() => regMatch.replace()).to.throw(Error));
       });
       it('error if first argument is array and second is string', function() {
          regMatch = new RegRepMatches([]);
@@ -125,7 +88,7 @@ describe("RegRepMatches", function() {
       });
       it('test if isClass matches on mismatched types', function() {
          let regMatch  = new RegRepMatches([]);
-         let map1 = new Map();;
+         let map1 = new Map();
          chai.expect(regMatch.isClass(map1)).to.be.false;
       });
    });
