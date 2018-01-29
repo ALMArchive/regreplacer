@@ -1,6 +1,6 @@
 {
   "name": "regreplacer",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "A library to facilitate regex matching, match/capture retrieval and string replacement",
   "main": "regreplacer.js",
   "scripts": {
