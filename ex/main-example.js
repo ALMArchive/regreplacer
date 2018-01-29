@@ -1,4 +1,4 @@
-const RegReplacer = require("../regreplacer.js");
+import RegReplacer from "../regreplacer.js";
 
 // Generate a RegReplacer object tied to a specific regex
 const regRep = new RegReplacer(/\$(\S*)/g);
@@ -30,14 +30,14 @@ console.log(indices); // [0, 4, 8]
 let newString1 = regMatches.replace(["This", "is", "cool."], "matches");
 console.log(newString1); // This is cool
 
-newString2 = regMatches.replace([1, 2, 3], "matches");
+let newString2 = regMatches.replace([1, 2, 3], "matches");
 console.log(newString2); // 1 2 3
 
 // Or we can replace the captures
 let newString3 = regMatches.replace(["This", "is", "cool."], "captures");
 console.log(newString3); // $This $is $cool
 
-newString4 = regMatches.replace([1, 2, 3], "captures");
+let newString4 = regMatches.replace([1, 2, 3], "captures");
 console.log(newString4); // $1 $2 $3
 
 // Replacements can be done programmtically

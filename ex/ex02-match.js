@@ -1,5 +1,4 @@
-const RegReplacer = require("../regreplacer.js");
-const RegRepMatches = require("../src/RegRepMatches.js");
+import RegReplacer from '../regreplacer';
 
 const regRep  = new RegReplacer(/Word/g);
 const match   = regRep.match("Word");
