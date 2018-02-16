@@ -16,6 +16,8 @@ This is RegReplacer
 ## Main Example
 Setup.
 ```javascript
+import RegReplacer from "../regreplacer.js";
+
 // Generate a RegReplacer object tied to a specific regex
 const regRep = new RegReplacer(/\$(\S*)/g);
 
@@ -87,7 +89,7 @@ Invalid regexs will throw an error on construction.
 
 #### Construction
 ```javascript
-const RegReplacer = require("../regreplacer.js");
+import RegReplacer from "../regreplacer.js";
 
 const regRep  = new RegReplacer(/\S+/g);
 const regReg2 = new RegReplacer(new RegExp("/s/g"));
