@@ -7,7 +7,7 @@
     "dist"
   ],
   "scripts": {
-    "test": "mocha test --compilers js:babel-register --require babel-polyfill",
+    "test": "mocha -r @std/esm test",
     "ex": "node -r @std/esm ex/main-example",
     "exAll": "node -r @std/esm ex/runAll",
     "build": "webpack",

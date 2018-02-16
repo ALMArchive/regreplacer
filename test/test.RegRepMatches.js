@@ -1,6 +1,6 @@
 "use strict";
 
-const chai = require('chai');
+import chai from 'chai';
 
 import RegRepMatches from '../src/regrepmatches';
 
