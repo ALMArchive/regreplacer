@@ -4,9 +4,10 @@ import path from "path";
 export default {
   entry: {
     "regreplacer": "./regreplacer.js",
-    "regreplacer.min": "./regreplacer.js"
   },
   output: {
+    library: 'regreplacer',
+    libraryTarget: 'umd',
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js"
   },
