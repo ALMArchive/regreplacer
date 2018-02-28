@@ -203,6 +203,21 @@ console.log(match.replace(["This", "is", "cool"], "captures"));
 "WThis Wis Wcool"
 ```
 
+##### replaceAll
+Allows you to replace all matches with a single value or transform using a function.
+
+```javascript
+let regRep  = new RegReplacer(/Word/g);
+let match   = regRep.match("Word Word Word");
+console.log(match.replaceAll("Hey", "matches"));
+"Hey Hey Hey"
+
+let regRep  = new RegReplacer(/Word/g);
+let match   = regRep.match("Word Word Word");
+console.log(match.replaceAll(e => e.toLowerCase() + "@@", "matches"));
+"word@@ word@@ word@@"
+```
+
 ## Scripts
 
 #### Testing

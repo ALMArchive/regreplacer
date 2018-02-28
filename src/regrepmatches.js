@@ -53,6 +53,29 @@ export default class RegRepMatches {
     return repString;
   }
 
+  replaceAll(rep, type) {
+    if (Array.isArray(rep)) this.replace(rep);
+    if ((typeof rep !== 'string') && (typeof rep !== 'function')) {
+      throw new Error('Must pass string or function to replaceAll.');
+    }
+    if (!validateType(type)) throw new Error('Must pass either captures or matches to replace');
+
+    let tmpArr;
+    if (type === 'matches') {
+      tmpArr = this.matches;
+    } else if (type === 'captures') {
+      tmpArr = this.captures;
+    }
+
+    // Grab original input off a match
+    let repString = this[CLASS_SYMBOL].matches[0].input;
+
+    // Replace each match using the passed in array.
+    repString = tmpArr.reduce((a, c) => a.replace(c, rep), repString);
+
+    return repString;
+  }
+
   isClass(other) {
     if (!other[CLASS_SYMBOL]) return false;
     if (!other[CLASS_SYMBOL].CLASS_SYMBOL) return false;
